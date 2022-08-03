@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../contexts/ThemeContext/ThemeContext";
+
 const ProductItem = ({ product }) => {
   const { name, id } = product;
   const themeCtx = useContext(ThemeContext);

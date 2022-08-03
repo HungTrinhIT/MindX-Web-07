@@ -1,7 +1,8 @@
-import { useState, createContext } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import ProductList from "./components/ProductList/ProductList";
+import { ThemeContext } from "./contexts/ThemeContext/ThemeContext";
 const productData = [
   {
     id: 1,
@@ -16,7 +17,6 @@ const productData = [
     name: "Nokia",
   },
 ];
-export const ThemeContext = createContext();
 
 const App = () => {
   const [products, setProducts] = useState(productData);
@@ -32,17 +32,17 @@ const App = () => {
   };
 
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        onChangeTheme,
-      }}
-    >
-      <div className="App">
+    <div className="App">
+      <ThemeContext.Provider
+        value={{
+          theme,
+          onChangeTheme,
+        }}
+      >
         <Header />
         <ProductList data={products} />
-      </div>
-    </ThemeContext.Provider>
+      </ThemeContext.Provider>
+    </div>
   );
 };
 
