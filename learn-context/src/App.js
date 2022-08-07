@@ -1,12 +1,15 @@
 import { useState } from "react";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// components
 import Header from "./components/Header/Header";
 import { ThemeContext } from "./contexts/ThemeContext/themeContext";
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
-import AuthProvider from "./contexts/AuthContext/authContext";
 import PrivateRoute from "./components/PrivateRoute";
+import AuthState from "./contexts/AuthContext/AuthState";
+
+import "./App.css";
 
 const App = () => {
   const [theme, setTheme] = useState("light"); // light | dark
@@ -23,7 +26,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <AuthProvider>
+        <AuthState>
           <ThemeContext.Provider
             value={{
               theme,
@@ -36,7 +39,7 @@ const App = () => {
               <Route path="/login" element={<LoginPage />} />
             </Routes>
           </ThemeContext.Provider>
-        </AuthProvider>
+        </AuthState>
       </div>
     </Router>
   );
