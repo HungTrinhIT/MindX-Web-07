@@ -1,25 +1,14 @@
 import { useState } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import ProductList from "./components/ProductList/ProductList";
-import { ThemeContext } from "./contexts/ThemeContext/ThemeContext";
-const productData = [
-  {
-    id: 1,
-    name: "Phone 12",
-  },
-  {
-    id: 2,
-    name: "Samsung",
-  },
-  {
-    id: 3,
-    name: "Nokia",
-  },
-];
+import { ThemeContext } from "./contexts/ThemeContext/themeContext";
+import Homepage from "./pages/Homepage";
+import LoginPage from "./pages/LoginPage";
+import AuthProvider from "./contexts/AuthContext/authContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
-  const [products, setProducts] = useState(productData);
   const [theme, setTheme] = useState("light"); // light | dark
 
   const onChangeTheme = () => {
@@ -32,17 +21,24 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <ThemeContext.Provider
-        value={{
-          theme,
-          onChangeTheme,
-        }}
-      >
-        <Header />
-        <ProductList data={products} />
-      </ThemeContext.Provider>
-    </div>
+    <Router>
+      <div className="App">
+        <AuthProvider>
+          <ThemeContext.Provider
+            value={{
+              theme,
+              onChangeTheme,
+            }}
+          >
+            <Header />
+            <Routes>
+              <Route path="/" element={<PrivateRoute component={Homepage} />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+          </ThemeContext.Provider>
+        </AuthProvider>
+      </div>
+    </Router>
   );
 };
 

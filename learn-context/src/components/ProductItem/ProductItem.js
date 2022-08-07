@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext/ThemeContext";
+import { useThemeContext } from "../../contexts/ThemeContext/themeContext";
 
 const ProductItem = ({ product }) => {
   const { name, id } = product;
-  const themeCtx = useContext(ThemeContext);
+  const themeCtx = useThemeContext();
 
   const styles =
     themeCtx.theme === "light"

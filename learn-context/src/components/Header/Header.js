@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext/ThemeContext";
+import { useThemeContext } from "../../contexts/ThemeContext/themeContext";
 
 const Header = (props) => {
-  const themeCtx = useContext(ThemeContext);
+  const themeCtx = useThemeContext();
   const { theme, onChangeTheme } = themeCtx;
   const styles =
     theme === "light"
