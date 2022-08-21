@@ -26,8 +26,9 @@ let students = [
   },
 ];
 
-// Students routing
 app.get("/students", (req, res) => {
+  const query = req.query;
+  console.log({ query });
   res.json({
     data: students,
   });
@@ -140,6 +141,23 @@ app.listen(PORT, () => {
   - Delete student:     DELETE  baseURL/students/:id
 
   - Different between PUT and PATCH
+
+  HTTP method     ----     API behaviour
+    GET                        Read
+    POST                       Create
+    DELETE                     Delete
+    PUT/PATCH                  Update
+
+  Request  
+    Body
+    Params
+    Query 
+
+  Design system
+  Database design
+  Devops: deployment, load balancer 
+  DDOS: 
+
 */
 
 /*
