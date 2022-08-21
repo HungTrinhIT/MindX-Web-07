@@ -21,8 +21,8 @@ let students = [
 ];
 
 router.get("/", (req, res) => {
-  const query = req.query;
-  console.log({ query });
+  // const query = req.query;
+  // console.log({ query });
   res.json({
     data: students,
   });
