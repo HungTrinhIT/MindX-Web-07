@@ -3,10 +3,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
+
 // app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors("*"));
-const students = [
+
+let students = [
   {
     id: "1",
     fullname: "Phat Truong",
@@ -98,7 +100,22 @@ app.put("/students/:id", (req, res) => {
 });
 
 app.delete("/students/:id", (req, res) => {
-  res.send("Delete a student");
+  const { id } = req.params;
+
+  const idx = students.findIndex((student) => student.id === id);
+  if (idx === -1) {
+    return res.json({
+      msg: "Student does not exist ",
+    });
+  }
+
+  const filtedStudent = students.filter((student) => student.id !== id);
+  students = filtedStudent;
+
+  res.json({
+    msg: "Delete student successfully",
+    data: students,
+  });
 });
 
 // End student API
