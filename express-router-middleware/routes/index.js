@@ -12,3 +12,4 @@ router.use("/students", studentRouter);
 router.use("/teachers", teacherRouter);
 
 module.exports = router;
+ 

@@ -17,6 +17,11 @@ app.get("/", (req, res) => {
 
 const PORT = 3001;
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at PORT ${PORT}`);
 });

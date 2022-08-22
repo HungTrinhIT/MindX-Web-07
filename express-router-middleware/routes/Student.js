@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-
+const apiLogger = require("../middlewares/logger");
 let students = [
   {
     id: "1",
