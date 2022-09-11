@@ -1,7 +1,6 @@
 const express = require("express");
-
 const router = express.Router();
-const apiLogger = require("../middlewares/logger");
+
 let students = [
   {
     id: "1",
@@ -20,9 +19,11 @@ let students = [
   },
 ];
 
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+
 router.get("/", (req, res) => {
-  // const query = req.query;
-  // console.log({ query });
+  const user = req.user;
+  console.log({ user });
   res.json({
     data: students,
   });
