@@ -7,11 +7,6 @@ const PASSWORD = process.env.BASIC_PASSWORD;
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const JWT_EXPIRY_TIME = process.env.JWT_EXPIRY_TIME;
 
-console.log({
-  USERNAME,
-  PASSWORD,
-});
-
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
@@ -36,7 +31,7 @@ router.post("/login", (req, res) => {
     });
   }
 
-  return res.json({
+  return res.status(403).json({
     msg: "Password or username is not correct, please try again",
   });
 });
