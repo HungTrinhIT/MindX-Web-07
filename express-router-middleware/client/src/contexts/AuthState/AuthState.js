@@ -3,8 +3,8 @@ import AuthContext from "./AuthContext";
 import authReducer from "./AuthReducer";
 
 const initialState = {
-  token: null,
-  isAuthenticated: false,
+  token: localStorage.getItem("token") || null,
+  isAuthenticated: !!localStorage.getItem("token") ? true : false,
   user: null,
 };
 

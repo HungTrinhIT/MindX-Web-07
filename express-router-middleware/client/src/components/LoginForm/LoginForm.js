@@ -1,6 +1,8 @@
 import React from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import "./LoginForm.css";
+
+const { Text } = Typography;
 
 const LoginForm = (props) => {
   const { onSubmit, error, inProgress } = props;
@@ -64,7 +66,7 @@ const LoginForm = (props) => {
               {inProgress ? "Submitting..." : "Login"}
             </Button>
           </Form.Item>
-          {error && <p>{error}</p>}
+          {error && <Text type="danger">{error}</Text>}
         </Form>
       </div>
     </div>
