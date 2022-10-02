@@ -1,0 +1,26 @@
+[
+  {
+    "username": "alice.190",
+    "age": 30,
+    "address": {
+      "street": "Ho Tung Mau",
+      "no": "abc"
+    }
+  },
+  {
+    "username": "bob_2008",
+    "age": 25,
+    "address": {
+      "street": "Hai Ba Trung",
+      "no": "abc"
+    }
+  },
+  {
+    "username": "admin",
+    "age": 19,
+    "address": {
+      "street": "Chu Van An",
+      "no": "abc"
+    }
+  }
+]
