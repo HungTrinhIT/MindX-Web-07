@@ -29,3 +29,41 @@ const categories = [
 module.exports = {
   categories,
 };
+
+const a = [
+  {
+    item: "Pens",
+    quantity: 350,
+    tags: ["school", "office"],
+    size: {
+      w: 10,
+      h: 30,
+    },
+  },
+  {
+    item: "Erasers",
+    quantity: 15,
+    tags: ["school", "home"],
+    size: {
+      w: 10,
+      h: 30,
+    },
+  },
+  {
+    item: "Maps",
+    tags: ["office", "storage"],
+    size: {
+      w: 10,
+      h: 30,
+    },
+  },
+  {
+    item: "Books",
+    quantity: 5,
+    tags: ["school", "storage", "home"],
+    size: {
+      w: 10,
+      h: 30,
+    },
+  },
+];

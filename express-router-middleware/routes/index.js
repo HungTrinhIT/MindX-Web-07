@@ -1,9 +1,7 @@
 const express = require("express");
 
-const studentRouter = require("./Student");
-const teacherRouter = require("./Teacher");
 const authRouter = require("./Auth");
-const categoryRouter = require("./Category");
+const userRouter = require("./User");
 
 const authMdw = require("../middlewares/auth");
 const apiLogger = require("../middlewares/logger");
@@ -13,5 +11,6 @@ const router = express.Router();
 router.use(apiLogger);
 
 router.use("/auth", authRouter);
+router.use("/users", userRouter);
 
 module.exports = router;
