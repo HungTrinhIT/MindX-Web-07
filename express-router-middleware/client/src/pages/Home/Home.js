@@ -14,11 +14,11 @@ const Home = (props) => {
   };
   return (
     <PageContainer
-      shouldShowFooter={false}
-      shouldShowHeader={false}
       title="Shopping forever | Sale up 50%"
+      shouldShowHeader={false}
     >
       <div>
+        <h1>Homepage</h1>
         <Button type="primary" onClick={onLogoutHandler}>
           Logout
         </Button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const PageContainer = (props) => {
   const { shouldShowFooter = true, shouldShowHeader = true, title } = props;
@@ -17,7 +18,11 @@ const PageContainer = (props) => {
             height: "80px",
             color: "#ffffff",
           }}
-        ></header>
+        >
+          <Link to="/">Homepage</Link>
+          <br />
+          <Link to="/account-settings">Account settings</Link>
+        </header>
       )}
 
       <main className="page-body">{props.children}</main>
