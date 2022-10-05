@@ -57,6 +57,7 @@ const resultOfBubbleSort = bubbleSort(nums);
 console.log(resultOfBubbleSort);
 
 /*
+    SORT
     1. O(n) = n^2 (*)
         - Algo  
             + Bubble Sort
@@ -80,4 +81,9 @@ console.log(resultOfBubbleSort);
             + Radix sort       
 
     
+    
+    SEARCH
+    
+    1. Linear Search: code, testcase, description
+    2. Binary Search: code, testcase, description
 */
