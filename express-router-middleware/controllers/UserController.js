@@ -21,11 +21,12 @@ const Create = async (user) => {
   };
 
   const createdUser = await db.users.insertOne(newUser);
+  console.log(createdUser);
   const returnUser = {
     ...newUser,
     id: createdUser.insertedId,
   };
-  return createdUser;
+  return returnUser;
 };
 const GetById = (id) => {};
 const Update = (id, payload) => {};
