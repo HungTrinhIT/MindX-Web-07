@@ -1,7 +1,14 @@
 import React from "react";
+import PageContainer from "../../components/PageContainer/PageContainer";
 
 const RegisterPage = (props) => {
-  return <div>RegisterPage</div>;
+  return (
+    <PageContainer>
+      <div>
+        <h1>Register</h1>
+      </div>
+    </PageContainer>
+  );
 };
 
 export default RegisterPage;

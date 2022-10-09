@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/AuthState/AuthContext";
 import { LOGIN } from "../../contexts/types";
 import actionCreator from "../../utils/actionCreator";
+import PageContainer from "../../components/PageContainer/PageContainer";
 
 const LoginPage = (props) => {
   const [loginError, setLoginError] = useState(null);
@@ -17,26 +18,22 @@ const LoginPage = (props) => {
     setLoginInProgress(true);
     try {
       const loginRes = await AuthServices.login(values);
-      setTimeout(() => {
-        dispatch(actionCreator(LOGIN, loginRes.data));
-        setLoginInProgress(false);
-        navigate("/");
-      }, 2000);
+      dispatch(actionCreator(LOGIN, loginRes.data));
+      setLoginInProgress(false);
+      navigate("/");
     } catch (error) {
       setLoginError(error.response.data.msg);
-      setTimeout(() => {
-        setLoginInProgress(false);
-      }, 2000);
+      setLoginInProgress(false);
     }
   };
   return (
-    <div>
+    <PageContainer>
       <LoginForm
         onSubmit={onLoginHandler}
         inProgress={loginInProgress}
         error={loginError}
       />
-    </div>
+    </PageContainer>
   );
 };
 

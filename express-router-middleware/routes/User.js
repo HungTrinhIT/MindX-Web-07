@@ -1,6 +1,5 @@
 const express = require("express");
-const { db } = require("../config/db");
-const bcrypt = require("bcrypt");
+const UserController = require("../controllers/UserController");
 
 const router = express.Router();
 
@@ -12,41 +11,25 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.post("/", async (req, res) => {
+//
+router.post("/", async (req, res, next) => {
   const { username, password, role, address } = req.body;
 
-  if (!username || !password || !role || !address) {
+  if (!username || !password || !address) {
     return res.status(400).json({
       msg: "Missing required keys",
     });
   }
 
-  const user = await db.users.find({ username }).toArray();
-  const isAlreadyExistUser = user.length > 0;
-
-  if (isAlreadyExistUser) {
-    return res.json({
-      msg: "Username already exist, please try again",
-    });
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  const hashPassword = await bcrypt.hash(password, salt);
-
-  const newUser = {
-    username,
-    role,
-    address,
-    password: hashPassword,
-  };
-
+  const user = { username, password, role, address };
   try {
-    const response = await db.users.insertOne(newUser, {});
+    const response = await UserController.Create(user);
     return res.status(201).json({
+      msg: "Create successfully",
       data: response,
     });
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 });
 

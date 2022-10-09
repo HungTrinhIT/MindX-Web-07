@@ -1,13 +1,9 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
+const AuthController = require("../controllers/AuthController");
+
 const router = express.Router();
 
-const USERNAME = process.env.BASIC_USERNAME;
-const PASSWORD = process.env.BASIC_PASSWORD;
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-const JWT_EXPIRY_TIME = process.env.JWT_EXPIRY_TIME;
-
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -16,25 +12,15 @@ router.post("/login", (req, res) => {
     });
   }
 
-  if (username === USERNAME && password === PASSWORD) {
-    const token = jwt.sign(
-      {
-        fullname: "Hung Trinh",
-        role: "admin",
-      },
-      JWT_SECRET_KEY,
-      { expiresIn: JWT_EXPIRY_TIME }
-    );
-    return res.json({
-      msg: "Login successfully",
-      token,
-      isAuthenticated: true,
+  try {
+    const loginResponse = await AuthController.login({
+      username,
+      password,
     });
+    return res.json(loginResponse);
+  } catch (error) {
+    next(error);
   }
-
-  return res.status(403).json({
-    msg: "Password or username is not correct, please try again",
-  });
 });
 
 module.exports = router;

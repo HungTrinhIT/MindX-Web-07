@@ -23,6 +23,7 @@ const PORT = 3001;
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  console.log(err);
   res.status(500).send(err.message);
 });
 

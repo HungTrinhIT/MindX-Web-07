@@ -19,7 +19,6 @@ function App() {
               path="/account-settings"
               element={<PrivateRoute component={AccountSettingsPage} />}
             />
-
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
           </Routes>
