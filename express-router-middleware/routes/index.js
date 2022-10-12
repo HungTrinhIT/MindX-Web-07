@@ -1,11 +1,8 @@
 const express = require("express");
 
-const studentRouter = require("./Student");
-const teacherRouter = require("./Teacher");
 const authRouter = require("./Auth");
 const userRouter = require("./User");
 
-const authMdw = require("../middlewares/auth");
 const apiLogger = require("../middlewares/logger");
 
 const router = express.Router();

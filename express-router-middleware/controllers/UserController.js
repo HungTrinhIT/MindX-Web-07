@@ -1,8 +1,9 @@
 const { db } = require("../config/db");
 const bcrypt = require("bcrypt");
+const { ObjectId } = require("mongodb");
 
 const Create = async (user) => {
-  const { username, password, role, address } = user;
+  const { username, password, address } = user;
   const existingUser = await db.users.findOne({ username });
 
   if (existingUser) {
@@ -21,14 +22,19 @@ const Create = async (user) => {
   };
 
   const createdUser = await db.users.insertOne(newUser);
-  console.log(createdUser);
+
   const returnUser = {
     ...newUser,
     id: createdUser.insertedId,
   };
   return returnUser;
 };
-const GetById = (id) => {};
+const GetById = (id) => {
+  return db.users.findOne({
+    _id: ObjectId(id),
+  });
+};
+
 const Update = (id, payload) => {};
 
 module.exports = {

@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   res.send("Hello welcome to our API");
 });
 
-const PORT = 3001;
+const PORT = process.env.REACT_APP_SERVER_PORT || 3001;
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

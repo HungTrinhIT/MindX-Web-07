@@ -14,7 +14,6 @@ module.exports = (req, res, next) => {
     throw new Error("Token is not valid, no authorization!");
   }
 
-  console.log(req.locals);
   req.user = decoded;
   next();
 };
