@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import AuthServices from "../../services/authServices";
 import axiosInstance from "../../services/axiosInstance";
 import actionCreator from "../../utils/actionCreator";
-import { GET_USER_INFO } from "../types";
+import { GET_USER_INFO, LOG_OUT } from "../types";
 import AuthContext from "./AuthContext";
 import authReducer from "./AuthReducer";
 
@@ -23,8 +23,13 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const verifyToken = async () => {
-    const verifyToken = await AuthServices.verifyToken();
-    dispatch(actionCreator(GET_USER_INFO, verifyToken.data));
+    try {
+      const verifyToken = await AuthServices.verifyToken();
+      dispatch(actionCreator(GET_USER_INFO, verifyToken.data));
+    } catch (error) {
+      dispatch(actionCreator(LOG_OUT));
+      console.error(error);
+    }
   };
 
   useEffect(() => {
