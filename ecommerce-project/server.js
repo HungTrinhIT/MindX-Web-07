@@ -10,7 +10,9 @@ connectToDB();
 
 // Middleware
 app.use(cors("*"));
+
 app.use(express.json({ extended: false }));
+
 app.use("/api/v1", routes);
 
 // Error handling
